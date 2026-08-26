@@ -2,5 +2,7 @@
   "name": "SpecVersus - pSEO Product Comparison Engine",
   "description": "Fast, modern Programmatic SEO product comparison platform with deep side-by-side specs, pros & cons, verdicts, FAQs, and ad-ready monetization layouts.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
