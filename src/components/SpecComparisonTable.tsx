@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { SlidersHorizontal, Battery, Tv, Cpu, HardDrive, Camera, DollarSign, Star, Check, Sparkles } from 'lucide-react';
+import { SlidersHorizontal, Battery, Tv, Cpu, HardDrive, Camera, DollarSign, Star, Check, Sparkles, ShoppingCart } from 'lucide-react';
 import { ProductItem } from '../types';
+import { SplitPriceButton } from './SplitPriceButton';
 
 interface SpecComparisonTableProps {
   itemA: ProductItem;
   itemB: ProductItem;
+  slug: string;
 }
 
 interface SpecRow {
@@ -16,7 +18,7 @@ interface SpecRow {
   isDifferent: boolean;
 }
 
-export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ itemA, itemB }) => {
+export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ itemA, itemB, slug }) => {
   const [onlyDifferences, setOnlyDifferences] = useState(false);
 
   // Define spec label mapping and relevant icons
@@ -122,25 +124,35 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ itemA,
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-slate-200 bg-white">
-              <th className="py-4 px-4 sm:px-6 text-xs font-semibold uppercase tracking-wider text-slate-400 w-1/4">
+              <th className="py-4 px-4 sm:px-6 text-xs font-semibold uppercase tracking-wider text-slate-400 w-1/4 align-top">
                 Feature / Spec
               </th>
-              <th className="py-4 px-4 sm:px-6 text-sm font-bold text-slate-900 w-[37.5%] bg-slate-50/40 border-l border-slate-200/60">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">{itemA.brand}</span>
-                    <span className="text-base text-slate-900">{itemA.name}</span>
+              <th className="py-4 px-4 sm:px-6 text-sm font-bold text-slate-900 w-[37.5%] bg-slate-50/40 border-l border-slate-200/60 align-top">
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">{itemA.brand}</span>
+                      <span className="text-base text-slate-900">{itemA.name}</span>
+                    </div>
+                    <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md self-start">${itemA.price.toFixed(2)}</span>
                   </div>
-                  <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">${itemA.price}</span>
+                  <div className="pt-0.5">
+                    <SplitPriceButton slug={slug} productName={itemA.name} size="sm" />
+                  </div>
                 </div>
               </th>
-              <th className="py-4 px-4 sm:px-6 text-sm font-bold text-slate-900 w-[37.5%] bg-slate-50/40 border-l border-slate-200/60">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">{itemB.brand}</span>
-                    <span className="text-base text-slate-900">{itemB.name}</span>
+              <th className="py-4 px-4 sm:px-6 text-sm font-bold text-slate-900 w-[37.5%] bg-slate-50/40 border-l border-slate-200/60 align-top">
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">{itemB.brand}</span>
+                      <span className="text-base text-slate-900">{itemB.name}</span>
+                    </div>
+                    <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md self-start">${itemB.price.toFixed(2)}</span>
                   </div>
-                  <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">${itemB.price}</span>
+                  <div className="pt-0.5">
+                    <SplitPriceButton slug={slug} productName={itemB.name} size="sm" />
+                  </div>
                 </div>
               </th>
             </tr>
@@ -185,6 +197,24 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ itemA,
                 </td>
               </tr>
             ))}
+
+            {/* Bottom Action / Where to Buy Row */}
+            <tr className="bg-slate-50/80 border-t-2 border-slate-200">
+              <td className="py-4 px-4 sm:px-6 font-bold text-slate-900">
+                <div className="flex items-center gap-2">
+                  <span className="p-1 rounded-md bg-indigo-100 text-indigo-700 flex-shrink-0">
+                    <ShoppingCart className="w-4 h-4" />
+                  </span>
+                  <span>Where to Buy</span>
+                </div>
+              </td>
+              <td className="py-4 px-4 sm:px-6 border-l border-slate-200">
+                <SplitPriceButton slug={slug} productName={itemA.name} size="sm" />
+              </td>
+              <td className="py-4 px-4 sm:px-6 border-l border-slate-200">
+                <SplitPriceButton slug={slug} productName={itemB.name} size="sm" />
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

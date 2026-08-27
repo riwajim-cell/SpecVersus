@@ -144,11 +144,36 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* Affiliate Disclosure Notice */}
-        <div className="mt-10 pt-6 border-t border-slate-100 text-[11px] text-slate-500 leading-relaxed">
-          <p>
-            <strong className="text-slate-700">Editorial & Affiliate Disclosure:</strong> SpecVersus is an independent technological comparison publication. We independently research, benchmark, and evaluate products. When you buy through links on our site, we may earn an affiliate commission at no extra cost to you. Advertisements served via Google AdSense are clearly delineated and marked.
-          </p>
+        {/* Affiliate & FTC Disclosure Notice */}
+        <div className="mt-10 pt-6 border-t border-slate-100 bg-slate-50/80 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-5 rounded-b-2xl border border-slate-200/60">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] text-slate-500 leading-relaxed">
+            <div>
+              <p className="font-medium text-slate-700">
+                <span className="font-bold text-indigo-700 mr-1.5 px-1.5 py-0.5 rounded bg-indigo-50 border border-indigo-100 text-[10px] uppercase tracking-wider">FTC Disclosure</span>
+                We may earn a commission when you purchase through links on our site.
+              </p>
+              <p className="text-slate-500 mt-1">
+                SpecVersus is an independent product comparison publication. We independently benchmark and analyze technical specifications. Outbound retail links may generate affiliate revenue at zero additional cost to you. Advertisements served via Google AdSense and third-party ad networks are clearly demarcated.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => onOpenModal('privacy')}
+                className="text-slate-600 hover:text-indigo-600 underline font-medium cursor-pointer"
+              >
+                Cookie Preferences
+              </button>
+              <span className="text-slate-300">•</span>
+              <button
+                type="button"
+                onClick={() => onOpenModal('about')}
+                className="text-slate-600 hover:text-indigo-600 underline font-medium cursor-pointer"
+              >
+                Methodology
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

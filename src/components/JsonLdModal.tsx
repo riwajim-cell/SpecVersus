@@ -39,7 +39,7 @@ export const JsonLdModal: React.FC<JsonLdModalProps> = ({ comparison, isOpen, on
                 Programmatic SEO (pSEO) Schema.org Markup
               </h3>
               <p className="text-xs text-slate-500">
-                Embedded JSON-LD for Google Rich Snippets (ProductGroup & FAQPage)
+                Embedded JSON-LD for Google Rich Snippets (Product & FAQPage)
               </p>
             </div>
           </div>

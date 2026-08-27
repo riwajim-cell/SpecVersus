@@ -1,14 +1,16 @@
 import React from 'react';
-import { Trophy, Award, Sparkles, Check, ShoppingCart } from 'lucide-react';
+import { Trophy, Award, Sparkles, Check } from 'lucide-react';
 import { ProductItem, Verdict } from '../types';
+import { SplitPriceButton } from './SplitPriceButton';
 
 interface QuickVerdictProps {
   itemA: ProductItem;
   itemB: ProductItem;
   verdict: Verdict;
+  slug: string;
 }
 
-export const QuickVerdict: React.FC<QuickVerdictProps> = ({ itemA, itemB, verdict }) => {
+export const QuickVerdict: React.FC<QuickVerdictProps> = ({ itemA, itemB, verdict, slug }) => {
   const isWinnerA = verdict.winner.toLowerCase().includes(itemA.name.toLowerCase());
   const isWinnerB = verdict.winner.toLowerCase().includes(itemB.name.toLowerCase());
 
@@ -77,16 +79,9 @@ export const QuickVerdict: React.FC<QuickVerdictProps> = ({ itemA, itemB, verdic
               <span><strong className="text-slate-800">Ideal for:</strong> {verdict.bestForA}</span>
             </p>
 
-            <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs text-slate-500 font-medium">Rating: ★ {itemA.rating} / 5.0</span>
-              <button
-                id={`check-price-${itemA.brand.toLowerCase()}`}
-                type="button"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-colors shadow-2xs"
-              >
-                <ShoppingCart className="w-3.5 h-3.5" />
-                <span>Check Price</span>
-              </button>
+              <SplitPriceButton slug={slug} productName={itemA.name} size="sm" />
             </div>
           </div>
 
@@ -117,16 +112,9 @@ export const QuickVerdict: React.FC<QuickVerdictProps> = ({ itemA, itemB, verdic
               <span><strong className="text-slate-800">Ideal for:</strong> {verdict.bestForB}</span>
             </p>
 
-            <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs text-slate-500 font-medium">Rating: ★ {itemB.rating} / 5.0</span>
-              <button
-                id={`check-price-${itemB.brand.toLowerCase()}`}
-                type="button"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-colors shadow-2xs"
-              >
-                <ShoppingCart className="w-3.5 h-3.5" />
-                <span>Check Price</span>
-              </button>
+              <SplitPriceButton slug={slug} productName={itemB.name} size="sm" />
             </div>
           </div>
         </div>
