@@ -260,14 +260,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               type="password"
               value={passcode}
               onChange={(e) => setPasscode(e.target.value)}
-              placeholder="Enter passcode (default: admin123)"
+              placeholder="Enter passcode"
               className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-hidden focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               autoFocus
             />
             {passcodeError && (
               <p className="text-xs text-rose-600 font-medium mt-1.5 flex items-center gap-1">
                 <AlertCircle className="w-3.5 h-3.5" />
-                <span>Incorrect passcode. Use default: <strong>admin123</strong></span>
+                <span>Incorrect passcode. Use default: <strong>password</strong></span>
               </p>
             )}
           </div>
