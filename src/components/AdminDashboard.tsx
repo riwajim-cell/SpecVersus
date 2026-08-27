@@ -284,7 +284,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </form>
 
         <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-          <span>Passcode: <code className="text-indigo-600 font-mono font-bold">password</code></span>
+          <span>SpecVersus <code className="text-indigo-600 font-mono font-bold"></code></span>
           <button type="button" onClick={onNavigateHome} className="hover:text-slate-700 underline">
             Return to App
           </button>
