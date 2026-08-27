@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap Index URL
+Sitemap: https://specversus.dpdns.org/sitemap.xml
