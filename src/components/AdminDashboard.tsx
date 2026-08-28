@@ -81,7 +81,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode === 'admin123') {
+    if (passcode === 'p$)Li#k77xq4') {
       setIsAuthenticated(true);
       sessionStorage.setItem('specversus_admin_auth', 'true');
       setPasscodeError(false);
